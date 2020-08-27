@@ -1,4 +1,4 @@
-from spacex-pypi import SpaceX
+from spacexpypi import SpaceX
 import asyncio
 
 async def main():
@@ -7,4 +7,3 @@ async def main():
     success = await api_client.get_roadster_status()
 
     print(success)
-    
