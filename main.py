@@ -11,6 +11,13 @@ async def main():
     #Next Launch Data
     success = await api_client.get_next_launch()
     write_file(success, "next_launch.json")
+
+    #All Next Launches Data
+    success = await api_client.get_upcoming_launches()
+    write_file(success, "upcoming_launches.json")
+
+    #close 
+    await api_client.close()
     
 
 def write_file(data, filename):
