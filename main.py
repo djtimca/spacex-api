@@ -7,3 +7,5 @@ async def main():
     success = await api_client.get_roadster_status()
 
     print(success)
+
+asyncio.run(main())
