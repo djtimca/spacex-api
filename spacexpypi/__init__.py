@@ -27,4 +27,4 @@ class SpaceX:
         async with await self._session.get(roadsterURL) as resp:
             response = await resp.text()
         
-        return json.dumps(response)
+        return json.loads(response)
