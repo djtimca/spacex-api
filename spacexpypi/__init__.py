@@ -14,7 +14,7 @@ class SpaceX:
         self.retry = 5
         self._session = aiohttp.ClientSession()
 
-    def close(self):
+    async def close(self):
         """Close the session."""
         await self._session.close()
 
