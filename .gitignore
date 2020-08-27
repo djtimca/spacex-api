@@ -130,3 +130,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Test Data Files
+roadster.json
+next_launch.json
