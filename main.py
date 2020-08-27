@@ -13,7 +13,7 @@ async def main():
     write_file(success, "next_launch.json")
     
 
-def write_file(data, filename)
+def write_file(data, filename):
     f = open(filename, "w")
     f.write(data)
     f.close()
