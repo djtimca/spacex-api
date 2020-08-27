@@ -15,7 +15,7 @@ async def main():
 
 def write_file(data, filename):
     f = open(filename, "w")
-    f.write(data)
+    f.write(str(data))
     f.close()
 
 asyncio.run(main())
