@@ -28,3 +28,14 @@ class SpaceX:
             response = await resp.text()
         
         return json.loads(response)
+
+    async def get_next_launch(self):
+        """Get the next SpaceX Launch details."""
+        response = {}
+
+        launchURL = BASE_URL + "launches/next"
+
+        async with await self._session.get(launchURL) as resp:
+            response = await resp.text()
+
+        return json.loads(response)
