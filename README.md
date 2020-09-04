@@ -11,5 +11,8 @@ Returns the current status and details of the SpaceX Tesla Roadster.
 ### get_next_launch()
 Returns the information on the next planned SpaceX launch.
 
+### get_latest_launch()
+Returns the information on the latest (most recent) SpaceX launch.
+
 ### get_upcoming_launches()
 Returns all upcoming launches that are planned with SpaceX.

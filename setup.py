@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="spacexpypi", 
     packages=["spacexpypi"],
-    version="0.0.1",
+    version="0.0.2",
     license='apache-2.0',
     author="Tim Empringham",
     author_email="tim.empringham@live.ca",
@@ -14,7 +14,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/djtimca/spacex-api",
-    download_url = 'https://github.com/djtimca/spacex-api/archive/v_001.tar.gz',
+    download_url = 'https://github.com/djtimca/spacex-api/archive/v_002.tar.gz',
     keywords = ['SpaceX', 'Launch', 'Roadster'],
     classifiers=[
         'Development Status :: 3 - Alpha',
