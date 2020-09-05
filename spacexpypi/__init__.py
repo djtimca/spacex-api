@@ -27,7 +27,10 @@ class SpaceX:
         async with await self._session.get(roadsterURL) as resp:
             response = await resp.text()
         
-        return json.loads(response)
+        if response is not None:
+            return json.loads(response)
+        else:
+            return ConnectionError
 
     async def get_next_launch(self):
         """Get the next SpaceX Launch details."""
@@ -38,7 +41,10 @@ class SpaceX:
         async with await self._session.get(launchURL) as resp:
             response = await resp.text()
 
-        return json.loads(response)
+        if response is not None:
+            return json.loads(response)
+        else:
+            return ConnectionError
 
     async def get_latest_launch(self):
         """Get the latest SpaceX Launch details."""
@@ -49,7 +55,10 @@ class SpaceX:
         async with await self._session.get(launchURL) as resp:
             response = await resp.text()
 
-        return json.loads(response)
+        if response is not None:
+            return json.loads(response)
+        else:
+            return ConnectionError
 
     async def get_upcoming_launches(self):
         """Get all upcoming launches."""
@@ -60,4 +69,7 @@ class SpaceX:
         async with await self._session.get(launchURL) as resp:
             response = await resp.text()
 
-        return json.loads(response)
+        if response is not None:
+            return json.loads(response)
+        else:
+            return ConnectionError
