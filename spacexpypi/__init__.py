@@ -30,7 +30,7 @@ class SpaceX:
         if response is not None:
             return json.loads(response)
         else:
-            return ConnectionError
+            raise ConnectionError("Error getting roadster data.")
 
     async def get_next_launch(self):
         """Get the next SpaceX Launch details."""
@@ -44,7 +44,7 @@ class SpaceX:
         if response is not None:
             return json.loads(response)
         else:
-            return ConnectionError
+            raise ConnectionError("Error getting next launch data.")
 
     async def get_latest_launch(self):
         """Get the latest SpaceX Launch details."""
@@ -58,7 +58,7 @@ class SpaceX:
         if response is not None:
             return json.loads(response)
         else:
-            return ConnectionError
+            raise ConnectionError("Error getting latest launch data.")
 
     async def get_upcoming_launches(self):
         """Get all upcoming launches."""
@@ -72,4 +72,4 @@ class SpaceX:
         if response is not None:
             return json.loads(response)
         else:
-            return ConnectionError
+            raise ConnectionError("Error getting upcoming launch data.")
