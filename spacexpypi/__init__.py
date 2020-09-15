@@ -28,7 +28,10 @@ class SpaceX:
             response = await resp.text()
         
         if response is not None:
-            return json.loads(response)
+            try:
+                return json.loads(response)
+            except json.decoder.JSONDecodeError as error:
+                raise ValueError("Error decoding SpaceX Data (%s).", str(error))
         else:
             raise ConnectionError("Error getting roadster data.")
 
@@ -42,7 +45,10 @@ class SpaceX:
             response = await resp.text()
 
         if response is not None:
-            return json.loads(response)
+            try:
+                return json.loads(response)
+            except json.decoder.JSONDecodeError as error:
+                raise ValueError("Error decoding SpaceX Data (%s).", str(error))
         else:
             raise ConnectionError("Error getting next launch data.")
 
@@ -58,7 +64,7 @@ class SpaceX:
         if response is not None:
             try:
                 return json.loads(response)
-            except ValueError as error:
+            except json.decoder.JSONDecodeError as error:
                 raise ValueError("Error decoding SpaceX Data (%s).", str(error))
         else:
             raise ConnectionError("Error getting latest launch data.")
@@ -73,6 +79,9 @@ class SpaceX:
             response = await resp.text()
 
         if response is not None:
-            return json.loads(response)
+            try:
+                return json.loads(response)
+            except json.decoder.JSONDecodeError as error:
+                raise ValueError("Error decoding SpaceX Data (%s).", str(error))
         else:
             raise ConnectionError("Error getting upcoming launch data.")
