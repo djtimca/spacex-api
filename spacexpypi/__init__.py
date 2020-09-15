@@ -56,7 +56,10 @@ class SpaceX:
             response = await resp.text()
 
         if response is not None:
-            return json.loads(response)
+            try:
+                return json.loads(response)
+            except ValueError as error:
+                raise ValueError("Error decoding SpaceX Data (%s).", str(error))
         else:
             raise ConnectionError("Error getting latest launch data.")
 
