@@ -32,6 +32,8 @@ class SpaceX:
                 return json.loads(response)
             except json.decoder.JSONDecodeError as error:
                 raise ValueError("Error decoding SpaceX Data (%s).", error)
+            except Exception as error:
+                raise ValueError("Unknown error in SpaceX data (%s),", error)
         else:
             raise ConnectionError("Error getting roadster data.")
 
@@ -49,6 +51,8 @@ class SpaceX:
                 return json.loads(response)
             except json.decoder.JSONDecodeError as error:
                 raise ValueError("Error decoding SpaceX Data (%s).", error)
+            except Exception as error:
+                raise ValueError("Unknown error in SpaceX data (%s),", error)
         else:
             raise ConnectionError("Error getting next launch data.")
 
@@ -66,6 +70,8 @@ class SpaceX:
                 return json.loads(response)
             except json.decoder.JSONDecodeError as error:
                 raise ValueError("Error decoding SpaceX Data (%s).", error)
+            except Exception as error:
+                raise ValueError("Unknown error in SpaceX data (%s),", error)
         else:
             raise ConnectionError("Error getting latest launch data.")
 
@@ -83,5 +89,7 @@ class SpaceX:
                 return json.loads(response)
             except json.decoder.JSONDecodeError as error:
                 raise ValueError("Error decoding SpaceX Data (%s).", error)
+            except Exception as error:
+                raise ValueError("Unknown error in SpaceX data (%s),", error)
         else:
             raise ConnectionError("Error getting upcoming launch data.")
