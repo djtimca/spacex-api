@@ -6,7 +6,7 @@ import json
 
 _LOGGER = logging.getLogger("spacex-pypi")
 
-BASE_URL = "https://api.spacexdata.com/v3/"
+BASE_URL = "https://api.spacexdata.com/v4/"
 
 class SpaceX:
     def __init__(self):
