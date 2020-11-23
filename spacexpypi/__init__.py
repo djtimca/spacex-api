@@ -53,7 +53,7 @@ class SpaceX:
                 formatted["launch_site"] = await self.get_launchpad(formatted["launchpad"])
                 formatted["rocket"] = await self.get_rocket(formatted["rocket"])
                 formatted["cores_detail"] = await self.get_cores(formatted["cores"])
-                formatted["payloads_detail"] = await self.get_payloads(formatted["payloads")
+                formatted["payloads_detail"] = await self.get_payloads(formatted["payloads"])
 
                 return formatted
             except json.decoder.JSONDecodeError as error:
@@ -79,7 +79,7 @@ class SpaceX:
                 formatted["launch_site"] = await self.get_launchpad(formatted["launchpad"])
                 formatted["rocket"] = await self.get_rocket(formatted["rocket"])
                 formatted["cores_detail"] = await self.get_cores(formatted["cores"])
-                formatted["payloads_detail"] = await self.get_payloads(formatted["payloads")
+                formatted["payloads_detail"] = await self.get_payloads(formatted["payloads"])
 
                 return formatted
             except json.decoder.JSONDecodeError as error:
@@ -157,7 +157,7 @@ class SpaceX:
 
         payloads_detail = []
 
-        for this_payload in payloads]:
+        for this_payload in payloads:
             async with await self._session.get(payloadURL + this_payload) as resp:
                 payload_details = await resp.json()
 
