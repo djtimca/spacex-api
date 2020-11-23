@@ -48,7 +48,14 @@ class SpaceX:
 
         if response is not None:
             try:
-                return json.loads(response)
+                formatted = json.loads(response)
+
+                formatted["launch_site"] = await self.get_launchpad(formatted["launchpad"])
+                formatted["rocket"] = await self.get_rocket(formatted["rocket"])
+                formatted["cores_detail"] = await self.get_cores(formatted["cores"])
+                formatted["payloads_detail"] = await self.get_payloads(formatted["payloads")
+
+                return formatted
             except json.decoder.JSONDecodeError as error:
                 raise ValueError("Error decoding SpaceX Data (%s).", error)
             except Exception as error:
@@ -67,7 +74,14 @@ class SpaceX:
 
         if response is not None:
             try:
-                return json.loads(response)
+                formatted = json.loads(response)
+                
+                formatted["launch_site"] = await self.get_launchpad(formatted["launchpad"])
+                formatted["rocket"] = await self.get_rocket(formatted["rocket"])
+                formatted["cores_detail"] = await self.get_cores(formatted["cores"])
+                formatted["payloads_detail"] = await self.get_payloads(formatted["payloads")
+
+                return formatted
             except json.decoder.JSONDecodeError as error:
                 raise ValueError("Error decoding SpaceX Data (%s).", error)
             except Exception as error:
@@ -93,3 +107,60 @@ class SpaceX:
                 raise ValueError("Unknown error in SpaceX data (%s),", error)
         else:
             raise ConnectionError("Error getting upcoming launch data.")
+    
+    async def get_launchpad(self, launchpad_id:str):
+        """Get the launchpad detail."""
+        
+        launchpadURL = BASE_URL + "launchpads/" + launchpad_id
+
+        async with await self._session.get(launchpadURL) as resp:
+            pad_details = await resp.json()
+
+        return pad_details
+
+    async def get_rocket(self, rocket_id:str):
+        """Get the rocket detail."""
+
+        rocketURL = BASE_URL + "rockets/" + rocket_id
+
+        async with await self._session.get(rocketURL) as resp:
+            rocket_details = await resp.json()
+
+        return rocket_details
+
+    async def get_cores(self, cores:list):
+        """Get the core details."""
+
+        coreURL = BASE_URL + "cores/"
+        landpadURL = BASE_URL + "landpads/"
+
+        cores_detail = []
+
+        for this_core in cores:
+            async with await self._session.get(coreURL + this_core["core"]) as resp:
+                core_details = await resp.json()
+
+            async with await self._session.get(landpadURL + this_core["landpad"]) as resp:
+                landpad_details = await resp.json()
+
+            this_core["details"] = core_details
+            this_core["landpad"] = landpad_details
+
+            cores_detail.append(this_core)
+
+        return cores_detail
+
+    async def get_payloads(self, payloads:list):
+        """Get the payload details."""
+
+        payloadURL = BASE_URL + "payloads/"
+
+        payloads_detail = []
+
+        for this_payload in payloads]:
+            async with await self._session.get(payloadURL + this_payload) as resp:
+                payload_details = await resp.json()
+
+            payloads_detail.append(payload_details)
+
+        return payloads_detail
