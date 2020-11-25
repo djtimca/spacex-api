@@ -132,6 +132,4 @@ dmypy.json
 .pyre/
 
 # Test Data Files
-roadster.json
-next_launch.json
-upcoming_launches.json
+test_data/*

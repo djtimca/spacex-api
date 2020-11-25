@@ -49,7 +49,7 @@ class SpaceX:
         if response is not None:
             try:
                 formatted = json.loads(response)
-
+                
                 formatted["launch_site"] = await self.get_launchpad(formatted["launchpad"])
                 formatted["rocket"] = await self.get_rocket(formatted["rocket"])
                 formatted["cores_detail"] = await self.get_cores(formatted["cores"])
@@ -137,11 +137,16 @@ class SpaceX:
         cores_detail = []
 
         for this_core in cores:
-            async with await self._session.get(coreURL + this_core["core"]) as resp:
-                core_details = await resp.json()
+            core_details = None
+            landpad_details = None
 
-            async with await self._session.get(landpadURL + this_core["landpad"]) as resp:
-                landpad_details = await resp.json()
+            if this_core.get("core"):
+                async with await self._session.get(coreURL + this_core["core"]) as resp:
+                    core_details = await resp.json()
+
+            if this_core.get("landpad"):
+                async with await self._session.get(landpadURL + this_core["landpad"]) as resp:
+                    landpad_details = await resp.json()
 
             this_core["details"] = core_details
             this_core["landpad"] = landpad_details
